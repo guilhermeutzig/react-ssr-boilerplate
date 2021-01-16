@@ -25,8 +25,6 @@ It's using ESLint and Prettier so it's necessary to install both extensions on V
 
 | Plugin | README |
 
-| --------- | ------------------------------------------------------------------------------------------ |
-
 `| ESlint |` [check plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
 
 `| Prettier |` [check plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) |
