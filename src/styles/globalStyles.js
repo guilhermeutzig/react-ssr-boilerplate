@@ -1,7 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-import fonts from "./fonts";
-import { mediaQuery } from "./variables";
+import fonts from './fonts';
 
 export default createGlobalStyle`
 html {

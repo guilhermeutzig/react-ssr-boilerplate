@@ -1,13 +1,9 @@
 {
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
-  "stylelint.enable": true,
   "editor.formatOnSave": true,
   "javascript.format.enable": true,
-  "scss.validate": true,
-  "css.validate": true,
   "eslint.run": "onSave",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

@@ -1,27 +1,27 @@
 # React SSR Boilerplate
 
-Estrutura de projetos front-end com o seguinte stack
+Frontend structure with the following stack:
 
 - Next.js
   - React
   - PropTypes
   - SVGR
-- Styled components
+  - ES6
+- Styled Components
+- Storybook
 - Pre-commit
-  - ESLint
-  - Prettier
+- ESLint
+- Prettier
 
-# Instalação
+# Install
 
 `| npm i |`
 
-# Setup de sua IDE
+# IDE Setup
 
-Para manter a qualidade de código e ter sempre um padrão entre todos da equipe o projeto tem regras definidas para javascript.
+To keep code quality high and keep a standard among the team, the structure has some rules to be followed.
 
-Usamos o Eslint/Prettier para Javascript/React.
-
-É necessário a integração dessas regras com o sua IDE favorita. Recomendamos o uso do Visual Studio Code com os seguintes plugins:
+It's using ESLint and Prettier so it's necessary to install both extensions on VSCode (recommended).
 
 | Plugin | README |
 
@@ -33,68 +33,66 @@ Usamos o Eslint/Prettier para Javascript/React.
 
 # Pre-commit
 
-Antes de commitar as alterações, o Pre-commit vai rodar as validações do ESLint. Caso haja algum erro, não será possível commitar.
+You won't be able to commit to the repository if there's warnings in the ESLint console.
 
 # Executando o projeto
 
-Abaixo os comandos que são usados no projeto:
+See the most used commands below:
 
 | Comando | Description |
 
 | ----------------------- | --------------------------------------------------------------------------------------------- |
 
-`| npm i |` Instala as dependências do projeto |
+`| npm run dev |` Runs the project on `http://localhost:3000` |
 
-`| npm run dev |` Executa o projeto em modo de desenvolvimento na porta `3000` |
+`| npm run build |` Builds the project inside the `.next/` folder |
 
-`| npm run build |` Executa o build do projeto e gera o diretório `.next/` |
+`| npm run export |` Export static HTML inside the `.out/` folter |
 
-`| npm run start |` Gera uma compilação da aplicação no diretório `dist/` e roda o servidor de express na porta `3000` |
+`| npm run svg-to-react |` This is the command used to convert the SVGs on the `public/svg` folder, to React components. They are exported inside `src/structure/icons` and this command runs before `build`, `export` and `dev`, so you'll probably won't need it |
 
-`| npm run export |` Gera o diretório com a aplicação estática dentro da pasta `.out/` |
+`| npm run storybook |` Runs Storybook (opens the browser automatically) |
 
-`| npm run svg-to-react |` Comando rodado juntamente com o `npm run dev` que converte os vetores (SVGs) da pasta `public/svg/` para componentes React |
-
-`| npm run storybook |` Executa o Storybook com a documentação dos componentes. (Porta escolhida automaticamente) |
-
-`| npm run build-storybook |` Gera o diretório `dist-storybook/` com o Storybook optimizado para produção |
+`| npm run build-storybook |` Builds Storybook inside the `dist-storybook/` folder |
 
 # Styleguide
 
-- Dentro da pasta `src/structure` temos uma outra pasta chamada `styleguide` designada para manter a documentação das cores, fontes e ícones do projeto. Todas essas 3 documentações são geradas automaticamente através de Javascript, sem a necessidade de atualizar o Storybook caso haja alguma atualização.
-- Para consultar, rode `npm run storybook` e acesse a pasta `Styleguide` na navegação da esquerda.
+- Inside `src/structure/styleguide` is where all the components for documentations are built. Fonts, icons and colors are generated automatically with Javascript when `npm run dev` is running so you don't need to keep updating it.
+- To check the style guide, run `npm run storybook` and go to the `Styleguide` directory.
 
-# Padrões de código/desenvolvimento
+# Code standards
 
-- Temos duas branches default no projeto onde temos CI:
+- We have two default branches with CI/CD implemented (optional):
 
-  - `master`: Vinculada com o ambiente de produção
-  - `develop`: Vinculada com o ambiente de homologação
-  - Quando em qualquer uma dessas branches ocorrer um merge, um deploy automático do projeto e do storybook será feito nos buckets configurados nas variáveis do repositório.
-  - Só é permitido merge nessas branches com Pull Request.
+  - `main`: Synced with production environment
+  - `develop`: Synced with development environment
 
 ---
 
-- Para nomenclatura de branches, utilizamos o padrão do Gitflow
+- For new branches, GitFlow is recommended for the names, here are some examples:
 
-  - `feature/${nomeDaFeature}` - Para features novas
-  - `hotfix/${nomeDoHotfix}` - Para hotfixes
-
----
-
-- Dentro da pasta structure temos 3 pastas dividindo os componentes, onde seguimos o modelo de `Atom Design`:
-
-  - `commons`: Átomos
-  - `components`: Módulos
-  - `containers`: Organismos
+  - `feature/${feature}` - For new features
+  - `hotfix/${hotfix}` - For hotfixes
 
 ---
 
-- Cada componente deve ter seu Storybook, JSX no seu nome e um arquivo de estilização no padrão `component.style.js`, com um `index.js` exportando o próprio componente como default.
-- Todos os componentes precisam estar documentados no Storybook com todas as suas variações.
-- Caso haja a necessidade de utilizar SVGs no projeto, jogue-os dentro da pasta `public/svg`. Vão ser gerados componentes React (quando o comando `npm run dev` é rodado) para cada um dos ícones na pasta `src/structure/icons`.
-- As rotas são geradas automaticamente com base nos arquivos `.jsx` dentro da pasta `src/pages`.
-- As definições de variáveis e funções de estilos para Styled Components estão dentro da pasta `src/styles`.
-- O projeto precisa ser feito em `rem` ao invés de `px`. Para facilitar, temos uma função no Styled Components onde pode ser passado um valor em `px` como inteiro e essa função vai fazer a conversão para `rem`. Ex: `margin-bottom: ${rem(80)}`.
-- Temos um componente de LazyLoad para imagens que deve ser usado para melhorias na parte de performance, está na pasta: `structure/commons/lazy-image`.
-- O container `structure/containers/layout` deve ser utilizado como layout do projeto. Ele também possui uma prop chamada `seo` que deve conter todas as informações de tags do projeto.
+- Inside `src/structure` we have 3 folders spliting the components:
+
+  - `commons`: Small modules that can be reused inside other components
+  - `components`: These are modules that are built with common components
+  - `containers`: These are modules that receives components as children (mainly used on page sections)
+
+---
+
+- Each component must have these structure (using `button` as example):
+  - `button.jsx` - React template
+  - `button.stories.js` - Storybook documentation
+  - `button.style.js` - Styles
+  - `index.js` - File to export `button.jsx` so we can use the name of the component on the file
+- All components must be documented with all it's variations on Storybook
+- All components must have PropTypes declaration for easier understanding, with default and required props
+- Routes are dinamycally generated based on the files inside `src/pages` folder
+- All the variables, colors, fonts, grid and global styles are inside `src/styles`
+- The styles must use `rem` instead of `px`. We have a function that does this conversion that can be used on all components, it's in `src/styles/variables`, example: `margin-bottom"${rem(80)};`
+- The structure has a LazyLoad component for images that's already configured, so you can use it to improve performance (it's in `src/structure/commons/lazy-image`)
+- We have a layout container (`src/structure/containers/layout`) that can be used on all pages. It contains a prop `seo` that must contains all the SEO information for that page

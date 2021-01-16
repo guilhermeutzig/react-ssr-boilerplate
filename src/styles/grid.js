@@ -1,6 +1,6 @@
-import styled from "styled";
+import styled from 'styled';
 
-import { mediaQuery, rem } from "./variables";
+import { mediaQuery, rem } from './variables';
 
 export const Container = styled.div`
   max-width: ${rem(950)};
