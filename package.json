@@ -1,0 +1,46 @@
+{
+  "name": "react-ssr-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run svg-to-react && next dev",
+    "build": "next build",
+    "start": "next build && next start",
+    "export": "npm run svg-to-react && next build && next export",
+    "svg-to-react": "svgr --icon --no-prettier -d src/structure/icons public/svg && node ./icon-list-generator",
+    "storybook": "npm run svg-to-react && start-storybook -s ./public",
+    "build-storybook": "build-storybook -s ./public -o ./dist-storybook",
+    "lintjs": "eslint -c .eslintrc src/**/**/**/**/*.{js,jsx}",
+    "fix-lintjs": "eslint -c .eslintrc src/**/**/**/**/*.{js,jsx} --fix"
+  },
+  "pre-commit": [
+    "lintjs"
+  ],
+  "dependencies": {
+    "next": "10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-lazy-load-image-component": "^1.5.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-backgrounds": "^5.3.17",
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/addon-viewport": "^5.3.17",
+    "@storybook/react": "^5.3.17",
+    "@svgr/cli": "^5.4.0",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "^8.2.0",
+    "babel-plugin-styled-components": "^1.11.1",
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-compat": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.0.2",
+    "file-loader": "^6.2.0",
+    "pre-commit": "^1.2.2",
+    "styled-components": "^5.2.1"
+  }
+}
