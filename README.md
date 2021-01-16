@@ -35,13 +35,9 @@ It's using ESLint and Prettier so it's necessary to install both extensions on V
 
 You won't be able to commit to the repository if there's warnings in the ESLint console.
 
-# Executando o projeto
+# Most used commands
 
-See the most used commands below:
-
-| Comando | Description |
-
-| ----------------------- | --------------------------------------------------------------------------------------------- |
+| Command | Description |
 
 `| npm run dev |` Runs the project on `http://localhost:3000` |
 
