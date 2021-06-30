@@ -15,10 +15,10 @@ describe('<LazyImage />', () => {
 
   it('Accept all required props', () => {
     const lazyImage = shallow(
-      <LazyImage src="image.jpg" alt={3} className="class" />,
+      <LazyImage src="image.jpg" alt="Alt text" className="class" />,
     );
     expect(lazyImage.props().src).to.equal('image.jpg');
-    expect(lazyImage.props().alt).to.equal(3);
+    expect(lazyImage.props().alt).to.equal('Alt text');
     expect(lazyImage.props().className).to.equal('class');
   });
 });
